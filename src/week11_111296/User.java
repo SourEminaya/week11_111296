@@ -17,7 +17,7 @@ public class User {
 	private static final int  maxLoginAttempts=3;
 	private static int loginAttempts;
 	
-	private String hash(String toHash) {
+	public String hash(String toHash) {
 		try {
 			digest=MessageDigest.getInstance("SHA-256");
 			byte[] hash=digest.digest(toHash.getBytes(StandardCharsets.UTF_8));
@@ -58,9 +58,9 @@ public class User {
 	public String greeting() {
 		String greet="Selamat Datang.";
 		switch(gender) {
-		case 'L': greet+= " Tuan ";
-		case 'P': greet+= " Nona ";
-		default : greet+= " Yang Terhormat ";}
+		case 'L': {greet+= " Tuan "; break;}
+		case 'P': {greet+= " Nona "; break;}
+		default : {greet+= " Yang Terhormat "; break;}}
 		greet+=this.firstName+" "+this.lastName;
 		return greet;
 	}
